@@ -3,7 +3,7 @@ class Scrappeur
   attr_accessor :hash_villes_emails, :ville_email_array, :ville_name_array
 
   def initialize
-        @hash_villes_emails = []
+    @hash_villes_emails = []
     @ville_email_array = []
     @ville_name_array = []
   end
@@ -40,20 +40,28 @@ class Scrappeur
         @ville_email_array << " "
       end
     end
+
+    # This value as to be returned.
+    # If not this not show email in the json file for the function save_as_json
     return @ville_email_array
   end
 
+  # function to save data in a json file
   def save_as_json
     File.open("db/emails.json","w") do |f|
       f.write(JSON.pretty_generate(@hash_villes_emails))
     end
   end
 
-  # function to save in a google spreadsheet
+  # function to save data in a google spreadsheet
   def save_as_spreadsheet
     i = 1
+
+    # Creates a session. This will prompt the credential via command line for the
+    # first time and save it to config.json file for later usages.
     session = GoogleDrive::Session.from_config("../../config.json")
 
+    # Put the key from the google spreadsheet you whant to use
     ws = session.spreadsheet_by_key("14NaBtVAdrbCF6CSlLhrBM0Ob9nE96zvyrwKNkSF3oIY").worksheets[0]
 
     # Puts cities and cities emails in 2 colones
@@ -68,14 +76,14 @@ class Scrappeur
     ws.reload
   end
 
+  # This methode is used to register data in a CSV file
+  # For mor information go to https://www.rubyguides.com/2018/10/parse-csv-ruby/
   def save_as_csv
-
     CSV.open("db/emails.csv", "wb") do |csv|
       for i in 0...@ville_name_array.length
         csv << [@ville_name_array[i], @ville_email_array[i]]
       end
     end
-
   end
 
   def perform
@@ -83,7 +91,7 @@ class Scrappeur
     get_mails =
     @hash_villes_emails = Hash[get_ville.zip(get_email(get_ville))]
     save_as_json
-    #save_as_spreadsheet
-    #save_as_csv
+    save_as_spreadsheet
+    save_as_csv
   end
 end

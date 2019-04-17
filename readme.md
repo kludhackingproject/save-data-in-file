@@ -1,4 +1,4 @@
-# Save Data in file
+# Enregistrer des données dans un fichier (JSON, Spreadsheet, CSV)
 
 Le projet du jour a pour but d'enregistrer dans 3 formats différents les e-mails du Val d'Oise (tu te rappelles bien sûr de ce projet, hein ?). Pour ce faire, reprends le programme que tu avais fait précédemment et mets dans une belle classe. Bien entendu (et cela vaudra pour TOUS les projets à venir), ton programme sera inclus dans un dossier bien structuré.
 
@@ -16,7 +16,7 @@ On te laisse utiliser les ressources du jour pour produire un joli JSON.
 
 À présent, c'est le CEO de Get-Email Corp qui voudrait que tu puisses lui envoyer tes résultats par e-mail. Cependant, ce dernier est un peu old school : il ne comprend pas comment obtenir la liste d’e-mails à partir d'un fichier scrapping.rb, ne pige rien au format JSON et refuse de suivre The Hacking Project. Comme le client est roi, la seule façon de lui fournir ces e-mails est de le faire via un fichier Google Spreadsheet. Ta mission est donc de trouver un moyen de faire un fichier Google Spreadsheet qui contienne en colonne A les noms des villes, et en colonne B les e-mails des dites mairies.
 
-Nous te conseillons de travailler sur un fichier spreadsheet que tu vas créer pour l'occasion. Rendez-vous sur [Ces quelques lignes de code](https://github.com/gimite/google-drive-ruby#example-to-readwrite-spreadsheets t'indiquent comment ouvrir un spreadsheet à partir de Ruby.
+Nous te conseillons de travailler sur un fichier spreadsheet que tu vas créer pour l'occasion. Rendez-vous sur [Ces quelques lignes de code](https://github.com/gimite/google-drive-ruby#example-to-readwrite-spreadsheets) t'indiquent comment ouvrir un spreadsheet à partir de Ruby.
 
 Tout ce travail de sauvegarde se fera via une méthode save_as_spreadsheet
 
